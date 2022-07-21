@@ -435,3 +435,310 @@
      "text": [
       "38  ,  3.5\n"
      ]
+    }
+   ],
+   "source": [
+    "c = s[s>2].sum()\n",
+    "d = s[s<7].mean()\n",
+    "print(c,d, sep='  ,  ')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 109,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "            A  B   C\n",
+       "2021-01-01  1  4  10\n",
+       "2021-01-02  3  6   9\n",
+       "2021-01-03  2  8   0"
+      ],
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>A</th>\n      <th>B</th>\n      <th>C</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>2021-01-01</th>\n      <td>1</td>\n      <td>4</td>\n      <td>10</td>\n    </tr>\n    <tr>\n      <th>2021-01-02</th>\n      <td>3</td>\n      <td>6</td>\n      <td>9</td>\n    </tr>\n    <tr>\n      <th>2021-01-03</th>\n      <td>2</td>\n      <td>8</td>\n      <td>0</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 109
+    }
+   ],
+   "source": [
+    "dict_1 = {'A':[1,3,2],\n",
+    "          'B':[4,6,8],\n",
+    "          'C':[10,9,0]}\n",
+    "\n",
+    "df = pd.DataFrame(dict_1, index=pd.date_range(start='2021-01-01', periods=3))\n",
+    "df.head()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 110,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "stream",
+     "name": "stdout",
+     "text": [
+      "[[ 1  4 10]\n [ 3  6  9]\n [ 2  8  0]],DatetimeIndex(['2021-01-01', '2021-01-02', '2021-01-03'], dtype='datetime64[ns]', freq='D'),Index(['A', 'B', 'C'], dtype='object'),(3, 3),9\n"
+     ]
+    }
+   ],
+   "source": [
+    "print(df.values, df.index, df.columns, df.shape, df.size,  sep=',')"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 111,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "            A   C\n",
+       "2021-01-01  1  10\n",
+       "2021-01-02  3   9\n",
+       "2021-01-03  2   0"
+      ],
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>A</th>\n      <th>C</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>2021-01-01</th>\n      <td>1</td>\n      <td>10</td>\n    </tr>\n    <tr>\n      <th>2021-01-02</th>\n      <td>3</td>\n      <td>9</td>\n    </tr>\n    <tr>\n      <th>2021-01-03</th>\n      <td>2</td>\n      <td>0</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 111
+    }
+   ],
+   "source": [
+    "df[['A', 'C']]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 115,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "            A  B   C\n",
+       "2021-01-01  1  4  10\n",
+       "2021-01-02  3  6   9"
+      ],
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>A</th>\n      <th>B</th>\n      <th>C</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>2021-01-01</th>\n      <td>1</td>\n      <td>4</td>\n      <td>10</td>\n    </tr>\n    <tr>\n      <th>2021-01-02</th>\n      <td>3</td>\n      <td>6</td>\n      <td>9</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 115
+    }
+   ],
+   "source": [
+    "df[:'2021-01-02']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 120,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "3"
+      ]
+     },
+     "metadata": {},
+     "execution_count": 120
+    }
+   ],
+   "source": [
+    "df['A']['01/02/2021'] # 날짜 타입(DatetimeIndex)으로 indexing하면 표기 방법이 바뀌어도 상관 없다."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 119,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "2021-01-01    1\n",
+       "2021-01-02    3\n",
+       "Freq: D, Name: A, dtype: int64"
+      ]
+     },
+     "metadata": {},
+     "execution_count": 119
+    }
+   ],
+   "source": [
+    "df[:'2021-01-02']['A']"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 114,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "DatetimeIndex(['2021-01-01', '2021-01-02', '2021-01-03'], dtype='datetime64[ns]', freq='D')"
+      ]
+     },
+     "metadata": {},
+     "execution_count": 114
+    }
+   ],
+   "source": [
+    "# 시계열 indexing\n",
+    "df.index"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 121,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "A    2\n",
+       "B    8\n",
+       "C    0\n",
+       "Name: 2021-01-03 00:00:00, dtype: int64"
+      ]
+     },
+     "metadata": {},
+     "execution_count": 121
+    }
+   ],
+   "source": [
+    "df.loc['2021-01-03'] # --> series(1차원) data로 넘어온다."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 125,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "2021-01-01    4\n",
+       "2021-01-02    6\n",
+       "2021-01-03    8\n",
+       "Freq: D, Name: B, dtype: int64"
+      ]
+     },
+     "metadata": {},
+     "execution_count": 125
+    }
+   ],
+   "source": [
+    "df.loc[:,'B'] # --> series(1차원) data로 넘어온다."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 127,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "            A   C\n",
+       "2021-01-01  1  10\n",
+       "2021-01-02  3   9\n",
+       "2021-01-03  2   0"
+      ],
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>A</th>\n      <th>C</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>2021-01-01</th>\n      <td>1</td>\n      <td>10</td>\n    </tr>\n    <tr>\n      <th>2021-01-02</th>\n      <td>3</td>\n      <td>9</td>\n    </tr>\n    <tr>\n      <th>2021-01-03</th>\n      <td>2</td>\n      <td>0</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 127
+    }
+   ],
+   "source": [
+    "df.loc[:, ['A','C']] # ['A':'C'] 도 가능"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 132,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "            A  B  C\n",
+       "2021-01-02  3  6  9\n",
+       "2021-01-03  2  8  0"
+      ],
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>A</th>\n      <th>B</th>\n      <th>C</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>2021-01-02</th>\n      <td>3</td>\n      <td>6</td>\n      <td>9</td>\n    </tr>\n    <tr>\n      <th>2021-01-03</th>\n      <td>2</td>\n      <td>8</td>\n      <td>0</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 132
+    }
+   ],
+   "source": [
+    "# B열이 5보다 큰 행을 선택(많이 안씀)\n",
+    "df.loc[df.loc[:,'B'] > 5]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 136,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "            B   C\n",
+       "2021-01-01  4  10\n",
+       "2021-01-02  6   9\n",
+       "2021-01-03  8   0"
+      ],
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>B</th>\n      <th>C</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>2021-01-01</th>\n      <td>4</td>\n      <td>10</td>\n    </tr>\n    <tr>\n      <th>2021-01-02</th>\n      <td>6</td>\n      <td>9</td>\n    </tr>\n    <tr>\n      <th>2021-01-03</th>\n      <td>8</td>\n      <td>0</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 136
+    }
+   ],
+   "source": [
+    "# '2021-01-02'이 5보다 큰 열을 선택\n",
+    "df.loc[:, df.loc['2021-01-02'] > 5]"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 137,
+   "metadata": {},
+   "outputs": [
+    {
+     "output_type": "execute_result",
+     "data": {
+      "text/plain": [
+       "            A  B  C\n",
+       "2021-01-02  3  6  9\n",
+       "2021-01-03  2  8  0"
+      ],
+      "text/html": "<div>\n<style scoped>\n    .dataframe tbody tr th:only-of-type {\n        vertical-align: middle;\n    }\n\n    .dataframe tbody tr th {\n        vertical-align: top;\n    }\n\n    .dataframe thead th {\n        text-align: right;\n    }\n</style>\n<table border=\"1\" class=\"dataframe\">\n  <thead>\n    <tr style=\"text-align: right;\">\n      <th></th>\n      <th>A</th>\n      <th>B</th>\n      <th>C</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <th>2021-01-02</th>\n      <td>3</td>\n      <td>6</td>\n      <td>9</td>\n    </tr>\n    <tr>\n      <th>2021-01-03</th>\n      <td>2</td>\n      <td>8</td>\n      <td>0</td>\n    </tr>\n  </tbody>\n</table>\n</div>"
+     },
+     "metadata": {},
+     "execution_count": 137
+    }
+   ],
+   "source": [
+    "# B열이 5보다 큰 행을 선택(이게 더 편함)\n",
+    "df.loc[df['B']>5]"
+   ]
+  },
